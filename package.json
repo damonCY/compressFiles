@@ -1,0 +1,31 @@
+{
+  "name": "compressfiles",
+  "version": "1.0.27",
+  "description": "A toolkit for compress files",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register -t 5000 test/test.js"
+  },
+  "keywords": [
+    "uglifyjs",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sun4343lee/compress.git"
+  },
+  "author": "chenyong",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "uglify-js": "^2.7.5"
+  },
+  "bin": {
+    "hap-uglifyjs": "index.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.2"
+  }
+}
