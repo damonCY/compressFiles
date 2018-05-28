@@ -7,7 +7,7 @@ let assert = chai.assert
 
 describe('compressfiles方法测试', () => {
   it('将文件压缩后放到dist目录', (done) => {
-    compressfiles('test/dist', 'test/src', 'ignoredir')
+    compressfiles('test/dist', 'test/src', 'test/src/ignoredir')
     const excutePath = process.cwd()
     const f = () => {
       const dirStat = fs.existsSync(path.join(excutePath, 'test/src'))

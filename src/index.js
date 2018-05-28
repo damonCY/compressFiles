@@ -30,7 +30,7 @@ const traverseDirSync = (dir, files, ignoredir) => {
     file = path.join(dir, file)
     const stat = fs.statSync(file)
     if (stat && stat.isDirectory()) {
-      if (ignoredir && file.indexOf(ignoredir) > 0) {
+      if (ignoredir && file.indexOf(ignoredir) > -1) {
          //　不处理忽略文件夹
       } else {
         traverseDirSync(file, files)
