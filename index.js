@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import uglifyFiles from './lib/index.js'
-import program from 'commander'
+const uglifyFiles = require('./lib/index.js')
+const program = require('commander')
 
 program.version('v' + require('./package.json').version)
 program.usage('<output> <source> <ignoredir>')
