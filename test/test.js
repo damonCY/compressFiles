@@ -1,13 +1,13 @@
-import uglifyFiles from '../lib/index.js'
+import compressfiles from '../lib/index.js'
 import path from 'path'
 import fs from 'fs'
 import chai from 'chai'
 
 let assert = chai.assert
 
-describe('uglifyFiles方法测试', () => {
+describe('compressfiles方法测试', () => {
   it('将文件压缩后放到dist目录', (done) => {
-    uglifyFiles('test/dist', 'test/case1', 'ignoredir')
+    compressfiles('test/dist', 'test/case1', 'ignoredir')
     const excutePath = process.cwd()
     const f = () => {
       const dirStat = fs.existsSync(path.join(excutePath, 'test/case1'))

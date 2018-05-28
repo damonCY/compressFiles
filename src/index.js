@@ -47,7 +47,7 @@ const traverseDirSync = (dir, files, ignoredir) => {
  * @param dest 目标路径
  * @param src 模板文件路径
  */
-const uglifyFiles = (dest, src, ignoredir) => {
+const compressfiles = (dest, src, ignoredir) => {
   const files = []
   // 遍历收集文件列表
   traverseDirSync(src, files, ignoredir)
@@ -62,4 +62,4 @@ const uglifyFiles = (dest, src, ignoredir) => {
   })
 }
 
-module.exports = uglifyFiles
+module.exports = compressfiles
