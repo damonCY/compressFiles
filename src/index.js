@@ -1,17 +1,17 @@
-const uglifyjs = require('uglify-js')
-const fs = require('fs')
-const path = require('path')
-
+import uglifyjs from 'uglify-js'
+import fs from 'fs'
+import path from 'path'
 
 /**
  * 递归创建目录 同步方法
  * @param dir
  * @returns {boolean}
  */
-const  mkdirsSync = dir => {
+const mkdirsSync = dir => {
   if (fs.existsSync(dir)) {
     return true
-  } else {
+  }
+  else {
     if (mkdirsSync(path.dirname(dir))) {
       fs.mkdirSync(dir)
       return true
@@ -30,9 +30,10 @@ const traverseDirSync = (dir, files, ignoredir) => {
     file = path.join(dir, file)
     const stat = fs.statSync(file)
     if (stat && stat.isDirectory()) {
+      // 不处理忽略文件夹
       if (ignoredir && file.indexOf(ignoredir) > -1) {
-         //　不处理忽略文件夹
-      } else {
+      }
+      else {
         traverseDirSync(file, files)
       }
     }
@@ -55,9 +56,17 @@ const compressfiles = (dest, src, ignoredir) => {
   files.forEach(file => {
     const relative = path.relative(src, file)
     const finalPath = path.join(dest, relative)
-    const result = uglifyjs.minify([file],{compress: true})
     mkdirsSync(path.dirname(finalPath))
-    fs.writeFileSync(finalPath, result.code)
+    const extname = path.extname(file)
+    if (extname === '.js') {
+      const result = uglifyjs.minify([file], { compress: true })
+      fs.writeFileSync(finalPath, result.code)
+    }
+    else {
+      // 非js文件直接copy
+      fs.writeFileSync(finalPath, fs.readFileSync(file))
+    }
+
     console.log(`file: ${finalPath} created.`)
   })
 }
