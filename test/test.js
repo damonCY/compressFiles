@@ -1,7 +1,7 @@
-import compressfiles from '../lib/index.js'
-import path from 'path'
 import fs from 'fs'
+import path from 'path'
 import chai from 'chai'
+import compressfiles from '../lib/index.js'
 
 let assert = chai.assert
 

@@ -1,6 +1,6 @@
-import uglifyjs from 'uglify-js'
 import fs from 'fs'
 import path from 'path'
+import uglifyjs from 'uglify-js'
 
 /**
  * 递归创建目录 同步方法
