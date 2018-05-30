@@ -1,6 +1,6 @@
 {
   "name": "compressfiles",
-  "version": "1.0.30",
+  "version": "1.0.32",
   "description": "A toolkit for compress files",
   "main": "index.js",
   "scripts": {

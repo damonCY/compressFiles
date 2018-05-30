@@ -48,7 +48,7 @@ const traverseDirSync = (dir, files, ignoredir) => {
  * @param dest 目标路径
  * @param src 模板文件路径
  */
-const compressfiles = (dest, src, ignoredir) => {
+const compressfiles = (src, dest, ignoredir) => {
   const files = []
   // 遍历收集文件列表
   traverseDirSync(src, files, ignoredir)

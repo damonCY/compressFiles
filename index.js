@@ -10,7 +10,7 @@ program
   })
 program
   .version('v' + require('./package.json').version)
-  .option('-s, --source', 'Specify a folder which need to be minified.')
+  .option('-o, --output', 'Specify a folder to write the minified code.')
   .option('-i, --ignore', 'Specify a folder which want to ignore.')
   .parse(process.argv)
 
@@ -20,12 +20,14 @@ if (program.args.length === 0) {
 
 function init () {
   const args = program.args
+  // source
   if (isEmpty(args[0])) {
-    console.log('Specify a file/folder to write the minified code')
+    console.log('Specify a folder which need to be minified.')
     return
   }
+  // output
   if (isEmpty(args[1])) {
-    console.log('Specify a folder which need to be minified.')
+    console.log('Specify a folder to write the minified code')
     return
   }
   compressfiles(args[0], args[1], args[2])
