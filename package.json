@@ -1,25 +1,22 @@
 {
   "name": "compressfiles",
-  "version": "1.0.35",
+  "version": "1.0.36",
   "description": "A toolkit for compress files",
   "main": "index.js",
   "scripts": {
     "build": "npm run lint && babel src --out-dir lib",
     "lint": "eslint ./src/ index.js",
-    "test": "mocha --require babel-core/register -t 5000 test/test.js"
+    "test": "rm -rf test/dist && mocha --require babel-core/register -t 5000 test/test.js"
   },
   "keywords": [
     "uglifyjs",
     "nodejs"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/damonCY/compressfiles.git"
-  },
-  "author": "chenyong",
+  "author": "DamonCY",
   "license": "MIT",
   "dependencies": {
     "commander": "^2.15.1",
+    "mocha": "^5.2.0",
     "uglify-js": "^2.7.5"
   },
   "bin": {
@@ -33,10 +30,6 @@
     "eslint": "^4.19.1",
     "eslint-config-hapjs": "0.0.1"
   },
-  "bugs": {
-    "url": "https://github.com/damonCY/compressfiles/issues"
-  },
-  "homepage": "https://github.com/damonCY/compressfiles#readme",
   "directories": {
     "lib": "lib",
     "test": "test"

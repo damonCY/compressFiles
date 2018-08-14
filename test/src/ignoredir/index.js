@@ -1,3 +1,3 @@
 function say() {
-  console.log('ignore  directory')
+  console.log('ignore  index.js')
 }

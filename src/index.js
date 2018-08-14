@@ -21,21 +21,23 @@ const mkdirsSync = dir => {
 
 /**
  * 遍历目录文件 同步方法
- * @param dir
+ * @param dir 源文件
  * @param files 收集的文件列表
+ * @param ignoreFileArr 排除文件
  */
-const traverseDirSync = (dir, files, ignoredir) => {
+const traverseDirSync = (dir, files, ignoreFileArr) => {
   const list = fs.readdirSync(dir)
   list.forEach(file => {
     file = path.join(dir, file)
     const stat = fs.statSync(file)
+    // 过滤文件
+    if (ignoreFileArr) {
+      for (const item of ignoreFileArr) {
+        if (file.indexOf(item) >= 0) return
+      }
+    }
     if (stat && stat.isDirectory()) {
-      // 不处理忽略文件夹
-      if (ignoredir && file.indexOf(ignoredir) > -1) {
-      }
-      else {
-        traverseDirSync(file, files)
-      }
+      traverseDirSync(file, files, ignoreFileArr)
     }
     else {
       files.push(file)
@@ -48,10 +50,10 @@ const traverseDirSync = (dir, files, ignoredir) => {
  * @param dest 目标路径
  * @param src 模板文件路径
  */
-const compressfiles = (src, dest, ignoredir) => {
+const compressfiles = (src, dest, ignoreFileArr) => {
   const files = []
   // 遍历收集文件列表
-  traverseDirSync(src, files, ignoredir)
+  traverseDirSync(src, files, ignoreFileArr)
 
   files.forEach(file => {
     const relative = path.relative(src, file)
