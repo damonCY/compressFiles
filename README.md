@@ -1,21 +1,54 @@
-# compressfiles
+# compressFiles
 
-使用[uglify-js](https://www.npmjs.com/package/uglify-js) 压缩指定目录下的js文件，将结果输出到指定目录。可设置忽略文件
+A small CLI tool for compressing JavaScript files in a target directory with `uglify-js`.
 
-## Install
+## Overview
 
-With [npm](https://www.npmjs.com/package/compressfiles) do:
+`compressFiles` scans a source directory, compresses JavaScript files, and writes the output into a destination directory.
 
-```
+It is useful for simple local build workflows where a lightweight minification script is enough.
+
+## Installation
+
+```bash
 npm install compressfiles
 ```
 
-## Command line usage
+Or install it globally:
 
-```javascript
-compressfiles path [dest dir] [ignore dir]
+```bash
+npm install -g compressfiles
 ```
 
-## License
+## Usage
 
-[MIT](https://github.com/damonCY/compressFiles/blob/master/LICENSE)
+```bash
+compressfiles <sourceDir> <outputDir> [ignoreDir]
+```
+
+### Example
+
+```bash
+compressfiles ./src ./dist ./src/vendor
+```
+
+- `sourceDir` — directory that contains JavaScript files to compress
+- `outputDir` — directory where compressed files will be written
+- `ignoreDir` — optional directory to exclude
+
+## Tech Stack
+
+- Node.js
+- uglify-js
+- commander
+
+## Project Structure
+
+- `index.js` — CLI entry
+- `src/` — source implementation
+- `lib/` — compiled output
+- `test/` — test cases
+
+## Notes
+
+This project focuses on a straightforward directory-based compression workflow rather than a full build pipeline.
